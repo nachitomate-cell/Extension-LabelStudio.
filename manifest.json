@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Label Studio Auto-Fill (AWP)",
+  "version": "0.1.0",
+  "description": "Rellena Relevancia, Aplicabilidad y Categorías AWP en Label Studio usando el catálogo pre-clasificado.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["*://*.run.app/*"],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Label Studio Auto-Fill"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.run.app/projects/*"],
+      "js": ["src/rules.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["data/relevancia.json"],
+      "matches": ["*://*.run.app/*"]
+    }
+  ]
+}
