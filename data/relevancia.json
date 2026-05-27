@@ -1,0 +1,349 @@
+{
+  "generatedAt": "2026-05-27T17:24:18.453Z",
+  "documents": {
+    "1-Advanced-Work-Packaging-Procedure-Insight-AWP-2017.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    },
+    "Actividades en Construcción.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Base de datos experiencias AWP.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    },
+    "CII-166-4_2017.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-324-2_2016.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-AWP-Book_2022.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-CBA-2020.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-EOC_2021.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-FR-390_2023.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-FR-391_2023.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-RS-319-1_2015.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-RT-272-12_2016.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-RT-272-2_1_2013.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-RT-272-2_2_2013.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-RT-272-2_3_2013.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-SR19-01 Companion Document.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Teórico"
+    },
+    "CII-SR19-01_2023.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Teórico"
+    },
+    "COP-AWP-PBP-01-2016-v1-Advanced-Work-Packaging-Summary.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "COP-WFP-PRC-02-2019-v1-AWP-EWP-Readiness-Playbook.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Calculo HH Construcción.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Calculo WFP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "Cálculo WorkFace Planner.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "DCC-CII-04_2020.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Día 1-Introducción al AWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "Estandarización AWP.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Even More Schedule For Sale.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    },
+    "HAMDI-THESIS-2013.pdf": {
+      "relevancia": "No relevante",
+      "aplicabilidad": "No aplica"
+    },
+    "Manual-Capacitacion-AWP.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 2-Fase Prefactibilidad Clase 2.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 2-Fase Prefactibilidad.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 3-Fase Factibilidad.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 4-Fase Detalles.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 5-Fase Construcción y PM 1.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "Módulo 5-Fase Construcción y PM 2.pdf": {
+      "relevancia": "Alta",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-001 Informe Camino a la Construcción.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-002 Administración de restricciones.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-003 Precalificación AWP proveedores.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-004 Matriz RACI AWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-005 Codificacion disciplinas y actividades.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-006 Procedimiento AWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-007 Informe CWA-CWP Estudio Factibilidad.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-008 Informe CWA-CWP Ing Detalles.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-009 Definición paquetes de área CWA.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-010 Definición paquetes de construcción CWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-011 Definición paquetes de instalación IWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-012 Checklist IWP Montaje de postes.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-013 Checklist IWP Montaje equipos mecánicos.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-014 Checklist IWP Relleno excavaciones con hormigón.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-015 Checllist IWP Instalación escalerillas eléctricas.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-016 Checklist IWP Excavaciones locales.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-017 Checklist IWP Emplantillado.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-018 Checklist IWP Instalación de cables eléctricos.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-019 Checklist IWP Montaje acero estructural.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-020 Checklist Fundaciones.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-020 Checklist IWP Fundaciones.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-021 Checklist IWP Piping.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-021 Checklist Piping.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-022 Checklist IWP Piping Subterraneo.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-022 Checklist Piping Subterraneo.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-023 Organigrama AWP FEL4 ID .pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-024 Guía SPI.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-025 Guía Paquetes de Ingeniería (EWP).pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-026_Cuadro_Mando_AWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-028_Estados_Paquetización_CWA.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-030_Definición_Paquetes_Construcción_CWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-031_Definición_Paquetes_Ingeniería_EWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-032_Gestión_Adquisiciones_equipos_materiales_PWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-033_Administración_SWP_Comisionamiento.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-034_Estandarización_AWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-035_Calculadora_HH_IWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-036_Calculadora_Workface_Planner.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-037_Maquinaria_Apoyo_Construccion.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-038_Permisos_Construccion.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-039_Tipologias_Proyectos.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-040_Tipos_Componentes_BIM.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-041_Información_Base_Proyecto.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-042_Mapa_Permisos_Acceso.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-043_Administración_IWP.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-044_HH_Estructuras_hormigon_factores.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-045_HH_Estructuras_acero_factores.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-046 Fichas IWP Construcción.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-047_Bases_Medida_Pago_AWP_.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "SQY-AWP-049 Informe CWP Ing Detalles.pdf": {
+      "relevancia": "Baja",
+      "aplicabilidad": "Práctico"
+    },
+    "WorkFace Planning for Construction Projects.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    },
+    "Workface Planner.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    },
+    "Workface Planning.pdf": {
+      "relevancia": "Media",
+      "aplicabilidad": "Práctico"
+    }
+  }
+}
