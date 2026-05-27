@@ -40,10 +40,18 @@
   }
 
   function getPdfBodyText() {
-    // The classification panel sits in a div with class "classification".
-    // Everything outside of it on the labeling view is treated as PDF body.
-    const classification = document.querySelector('.classification');
-    if (!classification) return document.body.innerText || '';
+    // Label Studio renders the PDF body inside .lsf-htx-richtext as a sequence
+    // of <span class="lsf-richtext__line"> elements. Join them with spaces so
+    // codes split across line breaks (CWA\nP) don't accidentally concatenate.
+    const container = document.querySelector('.lsf-htx-richtext');
+    if (container) {
+      const lines = container.querySelectorAll('.lsf-richtext__line');
+      if (lines.length) {
+        return [...lines].map((n) => n.textContent || '').join(' ');
+      }
+      return container.innerText || '';
+    }
+    // Fallback: strip the classification panel and read the rest.
     const clone = document.body.cloneNode(true);
     clone.querySelectorAll('.classification').forEach((n) => n.remove());
     return clone.innerText || '';

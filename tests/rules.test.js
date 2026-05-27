@@ -49,6 +49,25 @@ test('match es por palabra completa, no substring', () => {
   assert.deepEqual(findMentionedCategories('PEWPXX y NWFP'), []);
 });
 
+test('AWP no debe matchear ningún código', () => {
+  assert.deepEqual(findMentionedCategories('the AWP process is awesome'), []);
+});
+
+test('plurales: CWAs, IWPs, CWPs cuentan', () => {
+  assert.deepEqual(
+    findMentionedCategories('sequencing CWAs and CWPs, with IWPs everywhere'),
+    ['CWA', 'CWP', 'IWP'],
+  );
+});
+
+test('caso real: relevancia Alta + texto con CWA, CWP, IWP → fuerza WFP', () => {
+  const text = 'construction work areas (CWAs) and construction work packages (CWPs), aligning IWP activities';
+  assert.deepEqual(
+    computeAwpCategories('Alta', text),
+    ['CWA', 'CWP', 'IWP', 'WFP'],
+  );
+});
+
 test('texto vacío → sin menciones', () => {
   assert.deepEqual(findMentionedCategories(''), []);
   assert.deepEqual(findMentionedCategories(null), []);

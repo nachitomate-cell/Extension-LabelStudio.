@@ -5,7 +5,9 @@ function findMentionedCategories(pdfText) {
   if (!pdfText) return [];
   const found = new Set();
   for (const code of AWP_CATEGORIES) {
-    const re = new RegExp(`\\b${code}\\b`);
+    // Accept optional plural "s" (CWAs, IWPs, CWPs…) while still requiring
+    // a word boundary so PEWP / NWFP / AWP don't false-match.
+    const re = new RegExp(`\\b${code}s?\\b`);
     if (re.test(pdfText)) found.add(code);
   }
   return [...found];
