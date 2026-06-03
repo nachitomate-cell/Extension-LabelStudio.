@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.run.app/projects/*"],
-      "js": ["src/rules.js", "src/content.js"],
+      "js": ["src/content.js"],
       "run_at": "document_idle"
     }
   ],

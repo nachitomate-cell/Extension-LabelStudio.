@@ -1,12 +1,15 @@
-// Label Studio AWP auto-fill content script.
-// Assumes src/rules.js is loaded first (manifest order).
+// Label Studio auto-fill content script.
+// Reads catalog JSON (built from the client spreadsheet) and ticks the
+// Relevancia / Aplicabilidad / Categorías AWP checkboxes for each task.
 
 (() => {
   const LOG_PREFIX = '[LS-AutoFill]';
   const log = (...a) => console.log(LOG_PREFIX, ...a);
 
-  const SETTINGS_KEYS = { enabled: 'enabled', autoSubmit: 'autoSubmit' };
   const DEFAULTS = { enabled: true, autoSubmit: false };
+  const AWP_CATEGORIES = ['EWP', 'PWP', 'CWA', 'CWP', 'SWP', 'IWP', 'WFP'];
+  const RELEVANCIA_NAMES = ['Alta', 'Media', 'Baja', 'No relevante'];
+  const APLICABILIDAD_NAMES = ['Práctico', 'Teórico', 'No aplica'];
 
   // ---------- data loading ----------
   let catalogPromise = null;
@@ -41,24 +44,6 @@
     // Strip URL/path prefix (e.g. gs://bucket/path/file.pdf → file.pdf).
     const slash = raw.lastIndexOf('/');
     return slash >= 0 ? raw.slice(slash + 1) : raw;
-  }
-
-  function getPdfBodyText() {
-    // Label Studio renders the PDF body inside .lsf-htx-richtext as a sequence
-    // of <span class="lsf-richtext__line"> elements. Join them with spaces so
-    // codes split across line breaks (CWA\nP) don't accidentally concatenate.
-    const container = document.querySelector('.lsf-htx-richtext');
-    if (container) {
-      const lines = container.querySelectorAll('.lsf-richtext__line');
-      if (lines.length) {
-        return [...lines].map((n) => n.textContent || '').join(' ');
-      }
-      return container.innerText || '';
-    }
-    // Fallback: strip the classification panel and read the rest.
-    const clone = document.body.cloneNode(true);
-    clone.querySelectorAll('.classification').forEach((n) => n.remove());
-    return clone.innerText || '';
   }
 
   function getTaskId() {
@@ -127,9 +112,6 @@
   }
 
   // ---------- main fill action ----------
-  const RELEVANCIA_NAMES = ['Alta', 'Media', 'Baja', 'No relevante'];
-  const APLICABILIDAD_NAMES = ['Práctico', 'Teórico', 'No aplica'];
-
   async function fillCurrentTask({ trigger } = { trigger: 'auto' }) {
     const settings = await getSettings();
     if (!settings.enabled && trigger === 'auto') return { skipped: 'disabled' };
@@ -144,19 +126,15 @@
       return { skipped: 'not-in-catalog', filename };
     }
 
-    const pdfText = getPdfBodyText();
-    const desired = window.LSRules.computeDesiredState({
+    const desired = {
       relevancia: entry.relevancia,
       aplicabilidad: entry.aplicabilidad,
-      pdfText,
-    });
+      awp: Array.isArray(entry.awp) ? entry.awp : [],
+    };
 
-    // Clear the unwanted ones first, then set the desired ones.
     for (const n of RELEVANCIA_NAMES) setCheckbox(n, n === desired.relevancia);
-    for (const n of APLICABILIDAD_NAMES)
-      setCheckbox(n, n === desired.aplicabilidad);
-    for (const n of window.LSRules.AWP_CATEGORIES)
-      setCheckbox(n, desired.awp.includes(n));
+    for (const n of APLICABILIDAD_NAMES) setCheckbox(n, n === desired.aplicabilidad);
+    for (const n of AWP_CATEGORIES) setCheckbox(n, desired.awp.includes(n));
 
     log('rellenado', filename, desired);
 
