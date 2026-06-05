@@ -1,15 +1,12 @@
-// Label Studio auto-fill content script.
-// Reads catalog JSON (built from the client spreadsheet) and ticks the
-// Relevancia / Aplicabilidad / Categorías AWP checkboxes for each task.
+// Label Studio AWP auto-fill content script.
+// Assumes src/rules.js is loaded first (manifest order).
 
 (() => {
   const LOG_PREFIX = '[LS-AutoFill]';
   const log = (...a) => console.log(LOG_PREFIX, ...a);
 
+  const SETTINGS_KEYS = { enabled: 'enabled', autoSubmit: 'autoSubmit' };
   const DEFAULTS = { enabled: true, autoSubmit: false };
-  const AWP_CATEGORIES = ['EWP', 'PWP', 'CWA', 'CWP', 'SWP', 'IWP', 'WFP'];
-  const RELEVANCIA_NAMES = ['Alta', 'Media', 'Baja', 'No relevante'];
-  const APLICABILIDAD_NAMES = ['Práctico', 'Teórico', 'No aplica'];
 
   // ---------- data loading ----------
   let catalogPromise = null;
@@ -44,6 +41,46 @@
     // Strip URL/path prefix (e.g. gs://bucket/path/file.pdf → file.pdf).
     const slash = raw.lastIndexOf('/');
     return slash >= 0 ? raw.slice(slash + 1) : raw;
+  }
+
+  function getImageFilename() {
+    const txt = document.body?.innerText || '';
+    const match = txt.match(/Archivo:\s*([^\n]+?\.(?:png|jpg|jpeg|webp))/i);
+    if (!match) return null;
+    const raw = match[1].trim();
+    const slash = raw.lastIndexOf('/');
+    return slash >= 0 ? raw.slice(slash + 1) : raw;
+  }
+
+  // CII-166-4_2017__p64_2.png → CII-166-4_2017.pdf
+  function imageFilenameToDocname(imgName) {
+    return imgName.replace(/__p\d+_\d+\.(png|jpg|jpeg|webp)$/i, '.pdf');
+  }
+
+  function getDocFilename() {
+    const pdf = getPdfFilename();
+    if (pdf) return pdf;
+    const img = getImageFilename();
+    if (img) return imageFilenameToDocname(img);
+    return null;
+  }
+
+  function getPdfBodyText() {
+    // Label Studio renders the PDF body inside .lsf-htx-richtext as a sequence
+    // of <span class="lsf-richtext__line"> elements. Join them with spaces so
+    // codes split across line breaks (CWA\nP) don't accidentally concatenate.
+    const container = document.querySelector('.lsf-htx-richtext');
+    if (container) {
+      const lines = container.querySelectorAll('.lsf-richtext__line');
+      if (lines.length) {
+        return [...lines].map((n) => n.textContent || '').join(' ');
+      }
+      return container.innerText || '';
+    }
+    // Fallback: strip the classification panel and read the rest.
+    const clone = document.body.cloneNode(true);
+    clone.querySelectorAll('.classification').forEach((n) => n.remove());
+    return clone.innerText || '';
   }
 
   function getTaskId() {
@@ -83,6 +120,13 @@
     return true;
   }
 
+  function findSkipButton() {
+    for (const b of document.querySelectorAll('button')) {
+      if ((b.textContent || '').trim() === 'Skip') return b;
+    }
+    return null;
+  }
+
   function findSubmitButton() {
     const span = document.querySelector(
       'span.inline-flex.flex-1.whitespace-pre.items-center.px-tight',
@@ -112,29 +156,37 @@
   }
 
   // ---------- main fill action ----------
+  const RELEVANCIA_NAMES = ['Alta', 'Media', 'Baja', 'No relevante'];
+  const APLICABILIDAD_NAMES = ['Práctico', 'Teórico', 'No aplica'];
+
   async function fillCurrentTask({ trigger } = { trigger: 'auto' }) {
     const settings = await getSettings();
     if (!settings.enabled && trigger === 'auto') return { skipped: 'disabled' };
 
-    const filename = getPdfFilename();
-    if (!filename) return { skipped: 'no-pdf-name' };
+    const filename = getDocFilename();
+    if (!filename) return { skipped: 'no-filename' };
 
     const catalog = await loadCatalog();
     const entry = catalog[filename];
     if (!entry) {
-      log('documento no encontrado en el catálogo:', filename);
+      log('documento no encontrado en el catálogo, saltando:', filename);
+      const skipBtn = findSkipButton();
+      if (skipBtn && !skipBtn.disabled) skipBtn.click();
       return { skipped: 'not-in-catalog', filename };
     }
 
-    const desired = {
+    const desired = window.LSRules.computeDesiredState({
       relevancia: entry.relevancia,
       aplicabilidad: entry.aplicabilidad,
-      awp: Array.isArray(entry.awp) ? entry.awp : [],
-    };
+      awp: entry.awp || [],
+    });
 
+    // Clear the unwanted ones first, then set the desired ones.
     for (const n of RELEVANCIA_NAMES) setCheckbox(n, n === desired.relevancia);
-    for (const n of APLICABILIDAD_NAMES) setCheckbox(n, n === desired.aplicabilidad);
-    for (const n of AWP_CATEGORIES) setCheckbox(n, desired.awp.includes(n));
+    for (const n of APLICABILIDAD_NAMES)
+      setCheckbox(n, n === desired.aplicabilidad);
+    for (const n of window.LSRules.AWP_CATEGORIES)
+      setCheckbox(n, desired.awp.includes(n));
 
     log('rellenado', filename, desired);
 
@@ -181,7 +233,7 @@
 
   function maybeAutoFill() {
     if (fillPending || submitCooldown) return;
-    const filename = getPdfFilename();
+    const filename = getDocFilename();
     if (!filename) return;
     const node = findCheckbox('Alta');
     // Same DOM node = same task already filled, skip.
@@ -229,7 +281,7 @@
         : null;
       chrome.storage.sync.get({ currentTask: 1, totalTasks: 684 }, (s) => {
         sendResponse({
-          filename: getPdfFilename(),
+          filename: getDocFilename(),
           taskId: getTaskId(),
           currentTask: s.currentTask,
           totalTasks: s.totalTasks,
